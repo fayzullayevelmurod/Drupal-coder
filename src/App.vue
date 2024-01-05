@@ -4,69 +4,61 @@
     Отзывы
   </h1>
   <img src="./assets/bg_left.png" alt="" class="bg_left">
-  <swiper
-    :pagination="{
-      type: 'fraction',
-    }"
-    :navigation="true"
-    :modules="modules"
-    class="mySwiper"
-  >
-    <swiper-slide>
-      <div class="comment">
-        <div class="comment_left">
-          <img src="./assets/comment_logo.svg" alt="">
-          <h6>
-            Команда Drupal Coder вызвала только положительные впечатления!
-          </h6>
-          <p>
-            Нуреев Александр, менеджер проекта Winamp Russian Community
-          </p>
+  <div class="comment">
+    <div class="comment_left">
+        <swiper
+          :pagination="{
+            type: 'fraction',
+          }"
+          :navigation="true"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide>
+            <div class="comment_card">
+              <img src="./assets/comment_logo.svg" alt="">
+              <h6>
+                Команда Drupal Coder вызвала только положительные впечатления!
+              </h6>
+              <p>
+                Нуреев Александр, менеджер проекта Winamp Russian Community
+              </p>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="comment_card">
+              <img src="./assets/comment_logo.svg" alt="">
+              <h6>
+                Команда Drupal Coder вызвала только положительные впечатления!
+              </h6>
+              <p>
+                Нуреев Александр, менеджер проекта Winamp Russian Community
+              </p>
+            </div>
+          </swiper-slide>
+        </swiper>
         </div>
         <div class="line"></div>
         <div class="comment_right">
-          
-        </div>
-
+          <div class="swiper_btns">
+            <div class="swiper-button-prev">
+              <img src="./assets/arrow-left.svg" alt="">
+            </div>
+            <div class="swiper-pagination-fraction">
+              <span class="swiper-pagination-current">
+                1
+              </span>
+              <span class="number_line">/</span>
+              <span class="swiper-pagination-total">
+                5
+              </span>
+            </div>
+            <div class="swiper-button-next">
+              <img src="./assets/arrow-right.svg" alt="">
+            </div>
+          </div>
       </div>
-    </swiper-slide>
-    <swiper-slide>
-      <div class="comment">
-        <div class="comment_left">
-          <img src="./assets/comment_logo.svg" alt="">
-          <h6>
-            Команда Drupal Coder вызвала только положительные впечатления!
-          </h6>
-          <p>
-            Нуреев Александр, менеджер проекта Winamp Russian Community
-          </p>
-        </div>
-        <div class="line"></div>
-        <div class="comment_right">
-
-        </div>
-
-      </div>
-    </swiper-slide>
-    <swiper-slide>
-      <div class="comment">
-        <div class="comment_left">
-          <img src="./assets/comment_logo.svg" alt="">
-          <h6>
-            Команда Drupal Coder вызвала только положительные впечатления!
-          </h6>
-          <p>
-            Нуреев Александр, менеджер проекта Winamp Russian Community
-          </p>
-        </div>
-        <div class="line"></div>
-        <div class="comment_right">
-
-        </div>
-
-      </div>
-    </swiper-slide>
-  </swiper>
+    </div>
   </div>
 </template>
 <script>
@@ -98,6 +90,56 @@
 
 <style scoped>
 
+.swiper_btns{
+  width: 206px;
+  /* border: 1px solid red; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-pagination-fraction {
+  width: auto;
+  text-align: center;
+}
+
+.swiper-pagination-fraction span {
+  font-family: 'Montserrat',sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.swiper-pagination-current {
+  color: #050C33;
+}
+
+.number_line {
+  color: #E0E0E0;
+}
+
+.swiper-pagination-total {
+  color: #E0E0E0;
+}
+
+.comment_right {
+  display: flex;
+  align-items: center;
+}
+
+.swiper-button-prev {
+  position: absolute;
+}
+
+.swiper-button-prev::after {
+  display: none;
+}
+.swiper-button-next::after {
+  display: none;
+}
+
 .comment_container {
   max-width: 1440px;
   margin: 0 auto;
@@ -117,6 +159,7 @@
 .comment {
   padding: 80px 80px 88px 120px;
   margin: 0 auto;
+  display: flex;
   max-width: 980px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.10);
@@ -125,15 +168,18 @@
 }
 
 .line {
-  width: 10px;
+  margin: 0 60px;
+  width: 1px;
+  height: auto;
   background: #000;
   opacity: 0.2;
-  height: 100%;
+  /* height: 100%; */
 }
 
-.swiper-pagination-fraction {
-  position: absolute;
-  top: 0;
+.comment_left {
+  /* padding-right: 60px; */
+  width: 440px;
+  position: relative;
 }
 
 .comment_left h6 {
@@ -159,7 +205,6 @@
 }
 
 .mySwiper {
-  width: 100%;
   border: 1px solid red;
 }
 
@@ -167,5 +212,34 @@
   position: absolute;
   left: 0;
   top: 0;
+  width: 23%;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .comment {
+    padding: 30px;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .comment_title {
+    margin-top: 30px;
+    padding-top: 0;
+  }
+
+  .comment_left {
+    width: 100%;
+  }
+
+  .swiper_btns {
+    margin: 0 auto;
+  }
+
+  .line {
+    margin: 0;
+    width: 100%;
+    height: 1px;
+  }
 }
 </style>
