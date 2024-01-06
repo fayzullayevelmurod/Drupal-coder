@@ -9,8 +9,12 @@
         <swiper
           :pagination="{
             type: 'fraction',
+            el: fraction
           }"
-          :navigation="true"
+          :navigation="{
+            prevEl: prev,
+            nextEl: next,
+          }"
           :modules="modules"
           class="mySwiper"
         >
@@ -41,10 +45,10 @@
         <div class="line"></div>
         <div class="comment_right">
           <div class="swiper_btns">
-            <div class="swiper-button-prev">
+            <button ref="prev" class="swiper-button-prev">
               <img src="./assets/arrow-left.svg" alt="">
-            </div>
-            <div class="swiper-pagination-fraction">
+            </button>
+            <div ref="fraction" class="swiper-pagination-fraction">
               <span class="swiper-pagination-current">
                 1
               </span>
@@ -53,9 +57,9 @@
                 5
               </span>
             </div>
-            <div class="swiper-button-next">
+            <button ref="next" class="swiper-button-next">
               <img src="./assets/arrow-right.svg" alt="">
-            </div>
+            </button>
           </div>
       </div>
     </div>
@@ -64,12 +68,13 @@
 <script>
   // Import Swiper Vue.js components
   // import { Swiper, SwiperSlide } from 'swiper/vue';
+  import { ref } from 'vue';
   import { Swiper, SwiperSlide } from 'swiper/vue';
-  import 'swiper/css';
+  import { Pagination, Navigation } from 'swiper/modules';
 
+  import 'swiper/css';
   import 'swiper/css/pagination';
   import 'swiper/css/navigation';
-  import { Pagination, Navigation } from 'swiper/modules';
 
   // Import Swiper styles
   import 'swiper/css';
@@ -80,8 +85,14 @@
       SwiperSlide,
     },
     setup() {
+      const prev = ref(null);
+      const next = ref(null);
+      const fraction = ref(null);
       return {
         modules: [Pagination, Navigation],
+        prev,
+        next,
+        fraction
       };
     },
   };
@@ -89,6 +100,12 @@
 
 
 <style scoped>
+
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+}
 
 .swiper_btns{
   width: 206px;
@@ -202,10 +219,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-}
-
-.mySwiper {
-  border: 1px solid red;
 }
 
 .bg_left {
