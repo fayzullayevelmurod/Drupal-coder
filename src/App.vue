@@ -1,11 +1,11 @@
 <template>
   <div class="comment_container">
     <h1 class="comment_title">
-    Отзывы
-  </h1>
-  <img src="./assets/bg_left.png" alt="" class="bg_left">
-  <div class="comment">
-    <div class="comment_left">
+      Отзывы
+    </h1>
+    <img src="./assets/bg_left.png" alt="" class="bg_left">
+    <div class="comment">
+      <div class="comment_left">
         <swiper
           :pagination="{
             type: 'fraction',
@@ -18,18 +18,7 @@
           :modules="modules"
           class="mySwiper"
         >
-          <swiper-slide>
-            <div class="comment_card">
-              <img src="./assets/comment_logo.svg" alt="">
-              <h6>
-                Команда Drupal Coder вызвала только положительные впечатления!
-              </h6>
-              <p>
-                Нуреев Александр, менеджер проекта Winamp Russian Community
-              </p>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
+          <swiper-slide v-for="i in 14" :key="i">
             <div class="comment_card">
               <img src="./assets/comment_logo.svg" alt="">
               <h6>
@@ -41,26 +30,27 @@
             </div>
           </swiper-slide>
         </swiper>
-        </div>
-        <div class="line"></div>
-        <div class="comment_right">
-          <div class="swiper_btns">
-            <button ref="prev" class="swiper-button-prev">
-              <img src="./assets/arrow-left.svg" alt="">
-            </button>
-            <div ref="fraction" class="swiper-pagination-fraction">
-              <span class="swiper-pagination-current">
-                1
-              </span>
-              <span class="number_line">/</span>
-              <span class="swiper-pagination-total">
-                5
-              </span>
-            </div>
-            <button ref="next" class="swiper-button-next">
-              <img src="./assets/arrow-right.svg" alt="">
-            </button>
+      </div>
+
+      <div class="line"></div>
+      <div class="comment_right">
+        <div class="swiper_btns">
+          <button ref="prev" class="swiper-button-prev">
+            <img src="./assets/arrow-left.svg" alt="">
+          </button>
+          <div ref="fraction" class="swiper-pagination-fraction">
+            <span class="">
+              1
+            </span>
+            <span class="number_line">/</span>
+            <span class="swiper-pagination-total">
+              5
+            </span>
           </div>
+          <button ref="next" class="swiper-button-next">
+            <img src="./assets/arrow-right.svg" alt="">
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -99,7 +89,12 @@
 </script>
 
 
-<style scoped>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 button {
   background: transparent;
@@ -129,7 +124,7 @@ button {
   line-height: 28px;
 }
 
-.swiper-pagination-current {
+/* .swiper-pagination-current {
   color: #050C33;
 }
 
@@ -139,7 +134,7 @@ button {
 
 .swiper-pagination-total {
   color: #E0E0E0;
-}
+} */
 
 .comment_right {
   display: flex;
@@ -254,5 +249,20 @@ button {
     width: 100%;
     height: 1px;
   }
+}
+
+.swiper-pagination-fraction {
+  color: #E0E0E0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  display: flex;
+  gap: 8px;
+}
+
+.swiper-pagination-current {
+  color: #050C33 !important;
 }
 </style>
