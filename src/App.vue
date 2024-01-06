@@ -124,6 +124,10 @@ button {
   line-height: 28px;
 }
 
+.swiper-wrapper {
+  padding: 5px;
+}
+
 /* .swiper-pagination-current {
   color: #050C33;
 }
@@ -224,33 +228,6 @@ button {
 }
 
 
-@media only screen and (max-width: 992px) {
-  .comment {
-    padding: 30px;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .comment_title {
-    margin-top: 30px;
-    padding-top: 0;
-  }
-
-  .comment_left {
-    width: 100%;
-  }
-
-  .swiper_btns {
-    margin: 0 auto;
-  }
-
-  .line {
-    margin: 0;
-    width: 100%;
-    height: 1px;
-  }
-}
-
 .swiper-pagination-fraction {
   color: #E0E0E0;
   font-family: "Montserrat", sans-serif;
@@ -263,6 +240,49 @@ button {
 }
 
 .swiper-pagination-current {
-  color: #050C33 !important;
+  color: #050C33;
+}
+
+@media only screen and (max-width: 992px) {
+  .comment {
+    padding: 30px;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0px 20px;
+  }
+
+  .comment_title {
+    margin-top: 30px;
+    padding-top: 0;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .comment_left {
+    width: 100%;
+  }
+
+  .comment_left h6  {
+    font-size: 20px;
+  }
+
+  .swiper_btns {
+    margin: 0 auto;
+  }
+
+  .line {
+    margin: 0;
+    width: 100%;
+    height: 1px;
+  }
+
+  .swiper-pagination-fraction {
+    font-size: 20px;
+    gap: 8px;
+  }
+
+  .swiper-pagination-fraction span {
+    font-size: 20px;
+  }
 }
 </style>
