@@ -1,58 +1,125 @@
 <template>
-  <div class="comment_container">
-    <h1 class="comment_title">
-      Отзывы
-    </h1>
-    <img src="./assets/bg_left.png" alt="" class="bg_left">
-    <div class="comment">
-      <div class="comment_left">
+  <div class="wrapper">
+    <div class="comment_container">
+      <h1 class="comment_title">
+        Отзывы
+      </h1>
+      <img src="./assets/bg_left.png" alt="" class="bg_left">
+      <div class="comment">
+        <div class="comment_left">
+          <swiper
+            :pagination="{
+              type: 'fraction',
+              el: fraction
+            }"
+            :navigation="{
+              prevEl: prev,
+              nextEl: next,
+            }"
+            :modules="modules"
+            class="mySwiper"
+          >
+            <swiper-slide v-for="i in 14" :key="i">
+              <div class="comment_card">
+                <img src="./assets/comment_logo.svg" alt="">
+                <h6>
+                  Команда Drupal Coder вызвала только положительные впечатления!
+                </h6>
+                <p>
+                  Нуреев Александр, менеджер проекта Winamp Russian Community
+                </p>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
+  
+        <div class="line"></div>
+        <div class="comment_right">
+          <div class="swiper_btns">
+            <button ref="prev" class="swiper-button-prev">
+              <img src="./assets/arrow-left.svg" alt="">
+            </button>
+            <div ref="fraction" class="swiper-pagination-fraction">
+              <span class="">
+                1
+              </span>
+              <span class="number_line">/</span>
+              <span class="swiper-pagination-total">
+                5
+              </span>
+            </div>
+            <button ref="next" class="swiper-button-next">
+              <img src="./assets/arrow-right.svg" alt="">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <section class="works_card">
+      <div class="main_container">
+        <h2 class="comment_title">С нами работают</h2>
+        <p class="description">Десятки компаний доверяют нам самое ценное, что у них есть в интернете – свои сайты. Мы делаем всё, чтобы наше сотрудничество было долгим.</p>
         <swiper
-          :pagination="{
-            type: 'fraction',
-            el: fraction
-          }"
-          :navigation="{
-            prevEl: prev,
-            nextEl: next,
+          :slidesPerView="'auto'"
+          :loop="true"
+          :spaceBetween="20"
+          :centeredSlides="true"
+          :speed="3000"
+          :autoplay="{
+            delay: 0,
           }"
           :modules="modules"
-          class="mySwiper"
+          class="works_card_slider"
         >
-          <swiper-slide v-for="i in 14" :key="i">
-            <div class="comment_card">
-              <img src="./assets/comment_logo.svg" alt="">
-              <h6>
-                Команда Drupal Coder вызвала только положительные впечатления!
-              </h6>
-              <p>
-                Нуреев Александр, менеджер проекта Winamp Russian Community
-              </p>
+          <swiper-slide v-for="i in 4" :key="i">
+            <div class="card_content">
+              <img :src="require(`@/assets/works_card_${i}.svg`)" alt="">
+            </div>
+          </swiper-slide>
+          <swiper-slide v-for="i in 4" :key="i">
+            <div class="card_content">
+              <img :src="require(`@/assets/works_card_${i}.svg`)" alt="">
+            </div>
+          </swiper-slide>
+          <swiper-slide v-for="i in 4" :key="i">
+            <div class="card_content">
+              <img :src="require(`@/assets/works_card_${i}.svg`)" alt="">
+            </div>
+          </swiper-slide>
+        </swiper>
+        <swiper
+          :slidesPerView="'auto'"
+          :loop="true"
+          :centered-slides="true"
+          :spaceBetween="20"
+          :centeredSlides="true"
+          :speed="3000"
+          :autoplay="{
+            delay: 0,
+            reverseDirection: true,
+          }"
+          :modules="modules"
+          class="works_card_slider"
+        >
+          <swiper-slide v-for="i in 4" :key="i">
+            <div class="card_content">
+              <img :src="require(`@/assets/works_card_${i}.svg`)" alt="">
+            </div>
+          </swiper-slide>
+          <swiper-slide v-for="i in 4" :key="i">
+            <div class="card_content">
+              <img :src="require(`@/assets/works_card_${i}.svg`)" alt="">
+            </div>
+          </swiper-slide>
+          <swiper-slide v-for="i in 4" :key="i">
+            <div class="card_content">
+              <img :src="require(`@/assets/works_card_${i}.svg`)" alt="">
             </div>
           </swiper-slide>
         </swiper>
       </div>
-
-      <div class="line"></div>
-      <div class="comment_right">
-        <div class="swiper_btns">
-          <button ref="prev" class="swiper-button-prev">
-            <img src="./assets/arrow-left.svg" alt="">
-          </button>
-          <div ref="fraction" class="swiper-pagination-fraction">
-            <span class="">
-              1
-            </span>
-            <span class="number_line">/</span>
-            <span class="swiper-pagination-total">
-              5
-            </span>
-          </div>
-          <button ref="next" class="swiper-button-next">
-            <img src="./assets/arrow-right.svg" alt="">
-          </button>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 </template>
 <script>
@@ -60,7 +127,7 @@
   // import { Swiper, SwiperSlide } from 'swiper/vue';
   import { ref } from 'vue';
   import { Swiper, SwiperSlide } from 'swiper/vue';
-  import { Pagination, Navigation } from 'swiper/modules';
+  import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
   import 'swiper/css';
   import 'swiper/css/pagination';
@@ -79,7 +146,7 @@
       const next = ref(null);
       const fraction = ref(null);
       return {
-        modules: [Pagination, Navigation],
+        modules: [Autoplay, Pagination, Navigation],
         prev,
         next,
         fraction
@@ -90,6 +157,11 @@
 
 
 <style>
+body {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -100,6 +172,63 @@ button {
   background: transparent;
   outline: none;
   border: none;
+}
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main_container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.description {
+  color: var(--main-black, #050C33);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  opacity: 0.7;
+}
+
+.works_card .description {
+  max-width: 740px;
+  margin: 0 auto 42px;
+}
+
+.works_card .comment_title {
+  margin-bottom: 10px;
+  margin-top: 160px;
+}
+
+.works_card_slider {
+  overflow: visible;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.works_card_slider:last-child {
+  margin-bottom: 160px;
+}
+
+.works_card_slider .swiper-wrapper{
+  transition-timing-function:linear;
+}
+
+.works_card_slider .swiper-slide {
+  border-radius: 5px;
+  border: 1px solid #E5E5E5;
+  cursor: pointer;
+  width: 291px;
+}
+
+.works_card_slider .swiper-slide .card_content {
+  height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .swiper_btns{
@@ -249,6 +378,10 @@ button {
     flex-direction: column;
     gap: 30px;
     margin: 0px 20px;
+  }
+
+  .main_container {
+    padding: 0 20px;
   }
 
   .comment_title {
