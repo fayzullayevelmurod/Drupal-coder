@@ -19,11 +19,11 @@
             :modules="modules"
             class="mySwiper"
           >
-            <swiper-slide v-for="i in 14" :key="i">
+            <swiper-slide v-for="i in comments" :key="i">
               <div class="comment_card">
-                <img src="./assets/comment_logo.svg" alt="">
+                <img :src="require(`@/assets/${i.brend}`)" alt="">
                 <h6>
-                  Команда Drupal Coder вызвала только положительные впечатления!
+                  {{ i.description }}
                 </h6>
                 <p>
                   Нуреев Александр, менеджер проекта Winamp Russian Community
@@ -152,6 +152,32 @@
         fraction
       };
     },
+    data () {
+      return {
+        comments: [
+          {
+            brend: 'comment_logo.svg',
+            description: 'Команда Drupal Coder вызвала только положительные впечатления!'
+          },
+          {
+            brend: 'works_card_1.svg',
+            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing.'
+          },
+          {
+            brend: 'works_card_2.svg',
+            description: 'Provident similique accusantium nemo autem.'
+          },
+          {
+            brend: 'works_card_3.svg',
+            description: 'Perspiciatis minima nesciunt dolorem!'
+          },
+          {
+            brend: 'works_card_4.svg',
+            description: 'Commodi minima excepturi repudiandae velit hic maxime doloremque.'
+          }
+        ]
+      }
+    }
   };
 </script>
 
